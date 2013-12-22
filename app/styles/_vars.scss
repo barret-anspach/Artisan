@@ -1,0 +1,86 @@
+// GRID VARS
+$gutter: 15pt;
+$padding: 5pt;
+$width: 555pt;
+$side-width: (($width - ($gutter * 2)) / 3);
+$catW: 175pt;
+$catImgH: $side-width / 2;
+
+
+// FONT VARS
+$fontSize: 11pt;
+$lineHeight: 1em;
+$h1: 2em;
+$h2: 1.5em;
+$h3: 1.3em;
+$h4: 1em;
+
+// COLOR VARS
+$black: #231D1B;
+$dkGrey: rgba(145, 131, 124, 1);
+$dkGreyMask: rgba(145, 131, 124, .33);
+$ltGrey: rgba(211, 214, 205, 1);
+
+// STRAP COLOR VARS
+$white-00:      rgb(255, 250, 240);
+$black-01:      rgb(35, 29, 27);
+$brown-02:      rgb(77, 55, 45);
+$tan-03:        rgb(140, 64, 43);
+$honey-04:      rgb(167, 114, 29);
+$navy-08:       rgb(29, 53, 88);
+$bordeaux-09:   rgb(99, 40, 47);
+$orange-11:     rgb(255, 141, 0);
+$yellow-12:     rgb(243, 228, 58);
+$cognac-14:     rgb(162, 87, 33);
+$electric-blue-16: rgb(52, 72, 159);
+$apple-green-17: rgb(192, 222, 124);
+$emerald-21:    rgb(62, 123, 108);
+$pink-22:       rgb(225, 164, 178);
+$fuchsia-24:    rgb(216, 120, 140);
+$violet-28:     rgb(148, 112, 180);
+$baby-blue-30:  rgb(175, 204, 212);
+$turquoise-31:  rgb(77, 158, 150);
+$purple-38:     rgb(45, 30, 102);
+$fire-red-39:   rgb(192, 34, 40);
+$slate-blue-40: rgb(85, 108, 135);
+$coral-42:      rgb(244, 204, 156);
+$forest-green-48: rgb(0, 82, 60);
+$french-vanilla: rgb(240, 230, 166);
+$key-lime-51:   rgb(184, 205, 129);
+$white-pearl-60: rgb(231, 225, 219);
+$pink-pearl-61: rgb(233, 204, 197);
+$blue-pearl-62: rgb(188, 208, 204);
+$champagne-63:  rgb(236, 224, 208);
+
+#white-00 {
+	color: $white-00;
+}
+#black-01 {
+	color: $black-01;
+}
+#brown-02 {
+	color: $brown-02;
+}
+#tan-03 {
+	color: $tan-03;
+}
+#honey-04 {
+	color: $honey-04;
+}
+#navy-08 {
+	color: $navy-08;
+}
+#bordeaux-09 {
+	color: $bordeaux-09;
+}
+#orange-11 {
+	color: $orange-11;
+}
+#yellow-12 {
+	color: $yellow-12;
+}
+#cognac-14 {
+	color: $cognac-14;
+}
+
+

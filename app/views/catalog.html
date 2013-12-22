@@ -1,0 +1,22 @@
+<div ng-include="'views/header.html'"></div>
+
+<div id="catalog" ng-controller="CatalogCtrl">
+    <div class="header">
+        <h1>Catalog</h1>
+    </div>
+
+    <div id="catalog-body">
+
+        <div ui-view></div>
+
+        <div class="item-grid">
+
+            <div class="a-item" ui-sref="catalog.detail({ id: model.objectId })"  ng-repeat="model in modelQuery.items">
+                <div class="item-img" background="{{ model.frontImgUrl }}" size="cover"></div>
+                <div class="item-title">
+                    <h4>{{ model.name }}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+@mixin grid_prereqs(){
+	.row {
+		*zoom: 1;
+	}
+
+	.row:before,
+	.row:after {
+		display: table;
+		content: "";
+		line-height: 0;
+	}
+	.row:after {
+		clear: both;
+	}
+
+	.span{
+		float: left;
+		min-height: 1px;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+}
+
+@mixin grid_columns($total_columns, $total_width, $margin_right){
+	@extend .span;
+	width: ($total_width - (($total_columns - 1) * $margin_right)) / $total_columns;
+	margin-right: $margin_right;
+	&:nth-of-type(#{$total_columns}n) {
+		margin-right: 0;
+	}
+}
+
+@mixin grid3_span2($total_columns, $total_width, $margin_right){
+	@extend .span;
+	$span2: ((($total_width - (($total_columns - 1) * $margin_right)) / 3 ) * 2 ) + $margin_right;
+	width: $span2;
+	height: $span2 / 2;
+	margin-right: $margin_right;
+}
+
+@mixin grid3_height($total_columns, $total_width, $margin_right) {
+	@extend .span;
+	$span2: ((($total_width - (($total_columns - 1) * $margin_right)) / 3 ) * 2 ) + $margin_right;
+	height: $span2 / 2;
+}
+
+@mixin grid1($total_columns, $total_width, $margin_right){
+	@extend .span;
+	width: ($total_width - (($total_columns - 1) * $margin_right)) / 3;
+	margin-right: 0;
+}
+
+@mixin span_cols($columns, $total_columns, $total_width, $margin_right){
+	@extend .span;
+	width: (((($total_width - (($total_columns - 1) * $margin_right)) / $total_columns) * $columns) + (($columns - 1) * $margin_right));
+}
+
+@mixin offset_cols($columns, $total_columns, $total_width, $margin_right){
+	left: (((($total_width - (($total_columns - 1) * $margin_right)) / $total_columns) * $columns) + ($columns * $margin_right));
+}
+
+//	@mixin offset_columns($columns, $total_columns){
+//		margin-left: ((100% / $total_columns) * $columns);
+//	}

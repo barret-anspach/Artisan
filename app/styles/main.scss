@@ -1,0 +1,506 @@
+//$icon-font-path: "/bower_components/sass-bootstrap/fonts/";
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+//@import 'sass-bootstrap/lib/bootstrap.scss';
+@import 'vars';
+@import 'mixins';
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+body {
+	font-size: $fontSize;
+	font-weight: 300;
+	line-height: $lineHeight;
+	color: $dkGrey;
+
+	#white-00 {
+		color: $white-00;
+	}
+	#black-01 {
+		color: $black-01;
+	}
+	#brown-02 {
+		color: $brown-02;
+	}
+	#tan-03 {
+		color: $tan-03;
+	}
+	#honey-04 {
+		color: $honey-04;
+	}
+	#navy-08 {
+		color: $navy-08;
+	}
+	#bordeaux-09 {
+		color: $bordeaux-09;
+	}
+	#orange-11 {
+		color: $orange-11;
+	}
+	#yellow-12 {
+		color: $yellow-12;
+	}
+	#cognac-14 {
+		color: $cognac-14;
+	}
+
+	.banner-top {
+		position: fixed;
+		top: 0;
+		height: $gutter;
+		width: 100%;
+		background: $dkGrey;
+		z-index: 999;
+	}
+	.banner-bottom {
+		position: fixed;
+		bottom: 0;
+		height: $gutter;
+		width: 100%;
+		background: $dkGrey;
+		z-index: 999;
+	}
+	.container {
+		font-family: Lato;
+		width: $width;
+		padding: 0;
+		margin: ($gutter * 3) auto;
+		a {
+			text-decoration: none;
+			color: $dkGrey;
+			&:hover {
+				text-decoration: none;
+				color: $black;
+				cursor: pointer;
+			}
+		}
+		p {
+			font-family: Lato;
+		}
+		h1 {
+			font-size: $h1;
+			font-weight: 400;
+			color: $black;
+		}
+		h2 {
+			font-size: $h2;
+			font-weight: 300;
+			color: $dkGrey;
+		}
+		h3 {
+			font-size: $h3;
+			font-weight: 300;
+			color: $ltGrey;
+		}
+		h4 {
+			font-size: $fontSize;
+			font-weight: 300;
+			color: $dkGrey;
+		}
+		h1, h2, h3, h4, h5, h6 {
+			font-family: Lato;
+			text-rendering: optimizeLegibility;
+			padding: 0;
+			margin: 0;
+		}
+		ul {
+			display: inline-block;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			float:right;
+			li {
+				display: inline-block;
+				list-style: none;
+				margin: 0;
+				padding: 0 $gutter 0 0;
+				&:last-child {
+					padding-right: 0;
+				}
+				h4 {
+					padding: 0;
+				}
+			}
+		}
+	}
+}
+
+
+/* SITE HEADER */
+
+#site-header {
+	margin-bottom: $gutter;
+	.upper {
+		width: $width;
+		padding-bottom: $padding;
+		#title-logo {
+			display: inline-block;
+			width: 100pt;
+			height: 41pt;
+			vertical-align: bottom;
+			background-image: url('/images/AIT-Logo.jpg');
+			background-size: contain;
+			background-position: top;
+			background-repeat: no-repeat;
+			&:hover {
+				cursor: pointer;
+			}
+		}
+
+		nav {
+			float: right;
+			vertical-align: bottom;
+			ul {
+				padding-top: 2em;
+				li a {
+					&:hover {
+					}
+				}
+				li.active a {
+					color: $black;
+					font-weight: 400;
+				}
+				li.active:hover a {
+					color: $black;
+				}
+			}
+		}
+	}
+
+	.lower {
+		width: $width;
+		display: inline-block;
+		vertical-align: baseline;
+		padding-top: $padding;
+		.subtitle {
+			display: inline-block;
+			width: $side-width;
+			padding-top: 4px;
+		}
+		nav {
+			float: right;
+			ul {
+				li {
+					form {
+						input {
+							padding: 2px 3px 0px 2px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.item-detail-side {
+	position: relative;
+	display: block;
+	width: $side-width;
+	@include grid3_height(3, $width, $gutter);
+	float: right;
+	.color-squares {
+		position: relative;
+		display: block;
+		clear: left;
+		width: $side-width;
+		margin-bottom: $gutter;
+		.color-sq {
+			@include grid_columns(8, $side-width, $padding);
+			height: 17pt;
+			background-color: $dkGreyMask;
+			margin-bottom: $padding;
+			float: left;
+			border: 0px inset transparent;
+			&:nth-of-type(#{8}n) {
+				margin-right: 0;
+			}
+			&:hover {
+				cursor: pointer;
+			}
+			&:focus {
+				border: 0px inset $black;
+			}
+		}
+	}
+}
+
+
+/* VIEWS */
+
+#main,
+#catalog,
+#about {
+	width: $width;
+	margin: 0;
+	padding: 0;
+	.main-header,
+	.header {
+		position: relative;
+		display: block;
+		padding: $gutter 0;
+		border-top: 1px solid $dkGrey;
+		border-bottom: 1px solid $dkGrey;
+		h1 {
+			width: $width;
+			text-align: center;
+		}
+		h3 {
+			color: white;
+		}
+//		.featured {
+//			width: $width;
+//			height: $width / 2;
+//			padding-top: ($width - $gutter) / 4;
+//			font-size: $h1;
+//			color: white;
+//			background-color: $black;
+//		}
+	}
+}
+
+#main-body,
+#catalog-body,
+#about-body {
+	display: inline-block;
+	margin-top: $gutter;
+	.item-grid {
+		@include grid_prereqs();
+		.a-item {
+			width: $side-width;
+			padding-bottom: $gutter;
+			@include grid_columns(3, $width, $gutter);
+			.item-img {
+				display: inline-block;
+				width: $side-width;
+				height: $catImgH;
+//				vertical-align: bottom;
+				&:hover {
+					cursor: pointer;
+				}
+			}
+			.item-title {
+				// FIX!!! —————————————————————————————————————
+				min-height: $gutter;
+				max-height: $gutter + $padding;
+				padding-top: $padding * 2;
+				&:hover {
+					cursor: pointer;
+				}
+				h4 {
+					text-align: center;
+				}
+			}
+		}
+		.item-detail {
+			width: $width;
+			min-height: ($width / 2);
+//				height: ($width / 3) + ($gutter * 2);
+			margin-bottom: $gutter;
+			clear: both;
+			.item-detail-header {
+				margin-bottom: $gutter;
+				.right-handed {
+					float: right;
+					vertical-align: baseline;
+				}
+			}
+			.item-detail-img-size {
+				@include grid3_span2(3, $width, $gutter);
+			}
+			.carousel {
+				.carousel-indicators {
+					position: absolute;
+					width: auto;
+					height: auto;
+					margin-left: 0;
+					left: ($padding * 2);
+					top: ($padding * 2);
+					text-align: center;
+					li {
+						border: 1px solid $dkGrey;
+						background-color: #000 \9; // IE8
+						background-color: rgba(0,0,0,0); // IE9
+					}
+					.active {
+						background-color: $dkGrey;
+					}
+				}
+			}
+			.item-detail-img {
+				@include grid3_span2(3, $width, $gutter);
+				background-image: url("/images/AITG500-top.jpg");
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+			.item-detail-img2 {
+				@include grid3_span2(3, $width, $gutter);
+				background-image: url("/images/AITG500-bottom.jpg");
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+			.item-detail-side {
+				.form-entry {
+					position: absolute;
+					display: block;
+					bottom: 0;
+					width: $side-width;
+					.form-entry-row {
+						width: $side-width;
+						height: $gutter;
+						margin-bottom: $padding;
+						vertical-align: baseline;
+						clear: both;
+						.form-entry-label {
+							@include span_cols(3, 8, $side-width, $padding);
+							height: $gutter;
+							text-align: center;
+							vertical-align: baseline;
+							margin-right: $padding;
+							font-weight: 300;
+						}
+						form {
+							position: relative;
+							display: block;
+							@include span_cols(5, 8, $side-width, $padding);
+							min-height: $gutter;
+							vertical-align: baseline;
+							span {
+								position: absolute;
+								top: 2px;
+								width: 10px;
+								height: 10px;
+								margin: 0;
+								padding-bottom: 1px;
+								padding-right: 1px;
+								border: 1px solid $dkGrey;
+								border-radius: 15px;
+								background: white;
+								&:after {
+
+								}
+							}
+							input {
+								position: absolute;
+								top: 2px;
+								width: 12px;
+								height: 12px;
+								margin: 0;
+								filter: alpha(opacity=0);
+								opacity: 0;
+								cursor: pointer;
+							}
+							input[type='radio'] + span {
+								visibility: hidden;
+								width: 12px;
+								height: 12px;
+								top: 1px;
+								padding: 0;
+								border: 0px transparent;
+								background: $dkGrey;
+								&:after {
+									width: 12px;
+									height: 12px;
+									top: 1px;
+									border-radius: 12px;
+									background: $dkGrey;
+								}
+							}
+							input[type='radio']:checked + span {
+								visibility: visible;
+							}
+							label {
+								font-weight: 400;
+								padding: 0;
+								margin-left: $gutter;
+								margin-right: $padding;
+								vertical-align: top;
+							}
+						}
+						.dropdown {
+							position: relative;
+							@include span_cols(5, 8, $side-width, $padding);
+							.dropdown-title {
+								width: 100%;
+								text-align: center;
+								a {
+									font-weight: 400;
+								}
+								span {
+									margin-right: $padding;
+								}
+							}
+							.dropdown-menu {
+								position: absolute;
+								top: 100%;
+//									@include offset_cols(3, 8, $side-width, $padding);
+								@include span_cols(5, 8, $side-width, $padding);
+								min-width: $gutter * 6;
+								margin: 0;
+								padding: 0;
+								li {
+									width: 100%;
+									a {
+										padding-left: $padding;
+										padding-right: $padding;
+									}
+								}
+							}
+						}
+						.counter-container {
+							position: absolute;
+							@include offset_cols(3, 8, $side-width, $padding);
+							@include span_cols(5, 8, $side-width, $padding);
+							height: $gutter;
+						}
+						.counter-container .counter-minus, .counter-plus {
+							-webkit-user-select: none;
+							-moz-user-select: none;
+							-ms-user-select: none;
+							user-select: none;
+
+//								background: #333;
+							color: $dkGrey;
+							margin: 0;
+							padding: 0 $padding;
+							text-decoration: none;
+						}
+						.counter-minus {
+							float: left;
+						}
+						.counter-plus {
+							float: right;
+						}
+						.counter-container .counter-field {
+							height: $gutter;
+							margin: 0 0 0 ($padding * 2);
+							padding: 0 $padding;
+							text-align: center;
+							width: $gutter * 3;
+						}
+					}
+					.cart-button {
+						width: $side-width;
+						height: $gutter + $padding;
+						margin-top: ($padding * 2);
+						padding: 0 $padding;
+						text-align: center;
+						border: 2px inset $dkGrey;
+						color: $dkGrey;
+						background: white;
+					}
+				}
+			}
+			.item-detail-info {
+				position: relative;
+				clear: both;
+				width: $width;
+			}
+		}
+	}
+}
