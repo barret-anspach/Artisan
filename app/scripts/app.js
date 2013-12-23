@@ -4,9 +4,8 @@ angular.module('artisanApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ui.router'
-//  'ngRoute'
-//  'ui.bootstrap'
+  'ui.router',
+  'ui.bootstrap'
 ])
   .config(function ($stateProvider, $urlRouterProvider) {
 

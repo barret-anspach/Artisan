@@ -12,8 +12,9 @@
     <div class="lower">
         <nav>
             <ul>
-                <li><h4><a ui-sref="login">Login</a></h4></li>
-                <li><h4><a ui-sref="cart">Shopping Cart (0)</a></h4></li>
+                <li><h4><a ng-click='openLoginDialog()' ng-show='!User.current()'>Login</a></h4></li>
+                <li><h4><a ng-click='logout()' ng-show='User.current()'>Logout</a></h4></li>
+                <li><h4><a ui-sref="cart">Shopping Cart ({{user.shoppingCart.length || 0}})</a></h4></li>
                 <li>
                     <form type="search">
                         <input type="search" placeholder="Search">

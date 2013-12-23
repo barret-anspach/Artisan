@@ -16,10 +16,10 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
                 <div class="item active">
-                    <div class="item-detail-img"></div>
+                    <div class="item-detail-img" background='{{currentModel.frontImgUrl}}' size='cover'></div>
                 </div>
                 <div class="item">
-                    <div class="item-detail-img2"></div>
+                    <div class="item-detail-img2" background='{{currentModel.backImgUrl}}' size='cover'></div>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
         <div class="item-detail-side">
             <div class="color-squares">
                 <a data-toggle="tooltip" class="color-sq" ng-repeat="(key, value) in currentModel.colors">
-                    <input type="button" title="{{ value[0].name }}" class="color-sq" background-color="{{ value[0].rgb }}">
+                    <input ng-click=''type="button" title="{{ value[0].name }}" class="color-sq" background-color="{{ value[0].rgb }}">
                 </a>
             </div>
             <div class="form-entry">
@@ -35,7 +35,7 @@
                     <div class="form-entry-label">Length</div>
                     <form>
                         <span></span>
-                        <input name="regular" value="R" ng-model="length" type="radio" id="r1">
+                        <input name="regular" value="R" ng-model="length" type="radio" id="r1" ng-show=''>
                         <span></span>
                         <label for="r1">Regular</label>
                         <span></span>

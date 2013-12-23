@@ -332,17 +332,11 @@ body {
 			}
 			.item-detail-img {
 				@include grid3_span2(3, $width, $gutter);
-				background-image: url("/images/AITG500-top.jpg");
-				background-size: cover;
-				background-position: center;
-				background-repeat: no-repeat;
+
 			}
 			.item-detail-img2 {
 				@include grid3_span2(3, $width, $gutter);
-				background-image: url("/images/AITG500-bottom.jpg");
-				background-size: cover;
-				background-position: center;
-				background-repeat: no-repeat;
+
 			}
 			.item-detail-side {
 				.form-entry {
@@ -503,4 +497,8 @@ body {
 			}
 		}
 	}
+}
+
+.modal {
+  display: block;
 }

@@ -19,11 +19,10 @@ angular.module('artisanApp')
 
         $scope.fetchStrapsByModel = function(model) {
             $scope.currentModel = model;
-
             $scope.whereClause = {model:{__type:"Pointer", className:"Model", objectId:model.objectId}};
             $scope.strapQuery = monocle.Strap.query($scope.whereClause).include(["material", "color", "model", "size"]);
             $scope.strapQuery.fetch().success(function(data) {
-                console.log(data);
+
                 $scope.currentModel.sizes = _.groupBy(_.pluck(data, "size"), function(size) {
                     return size.sizeInMillimeters;
                 });

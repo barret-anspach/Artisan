@@ -69,6 +69,20 @@ strapApp.factory('monocle', ['$http', 'parseWrapper', ($http, parseWrapper) ->
 			#this is where you define your classes properities -- or column names
 			sizeInMillimeters: undefined
 
+	class User extends parseWrapper.User
+		constructor: (objectId) ->
+			super(objectId)
+
+		@register: () ->
+			props =
+				username: undefined,
+				fullname: undefined,
+				email: undefined,
+				shoppingCart: new parseWrapper.Collection('Strap')
+
+			angular.extend( props, parseWrapper.User.register() )
+			return props
+
 
 	monocle =
 		initialize: () ->
@@ -83,6 +97,7 @@ strapApp.factory('monocle', ['$http', 'parseWrapper', ($http, parseWrapper) ->
 	monocle.Color = parseWrapper.Resource.registerResource(Color)
 	monocle.Material = parseWrapper.Resource.registerResource(Material)
 	monocle.Model = parseWrapper.Resource.registerResource(Model)
+	monocle.User = parseWrapper.Resource.registerResource(User)
 	monocle.Size = parseWrapper.Resource.registerResource(Size)
 
 	monocle.initialize()
