@@ -1,10 +1,35 @@
 <div class="item-grid" ng-controller="CatalogDetailCtrl">
 
+
+
+    <!--Straps available with model Name: {{$stateParams.model}}-->
+
+    <!--Filter: {{search}}-->
+
+    <!--<table class='table table-bordered'>-->
+
+        <!--<thead>-->
+            <!--<th>Model Name</th>-->
+            <!--<th>Color</th>-->
+            <!--<th>Length</th>-->
+            <!--<th>Width</th>-->
+            <!--<th>Gender</th>-->
+        <!--</thead>-->
+        <!--<tr ng-repeat='strap in strapQuery.items | filter:search'>-->
+            <!--<td>{{strap.colorName}}</td>-->
+            <!--<td><a ng-click='search.colorName = strap.colorName; filterIt()'>{{strap.color}}</a></td>-->
+            <!--<td><a ng-click='search.length = strap.length; filterIt()'>{{strap.length}}</a></td>-->
+            <!--<td><a ng-click='search.size = strap.size; filterIt()'>{{strap.size}}</a></td>-->
+            <!--<td><a ng-click='search.gender = strap.gender; filterIt()'>{{strap.gender}}</a></td>-->
+        <!--</tr>-->
+    <!--</table>-->
     <div class="item-detail">
 
+        <div ng-show='availableStraps.length == 1'>This is the only strap of this kind</div>
+
         <div class="item-detail-header">
-            <span class="right-handed"><h2>$169.99</h2></span>
-            <h2>{{ currentModel.name }}</h2>
+            <span class="right-handed"><h2>{{currentStrap.price}}</h2></span>
+            <h2>{{ currentStrap.modelName }}</h2>
         </div>
 
         <div id="carousel-item-detail" class="carousel slide item-detail-img-size" data-ride="carousel">
@@ -16,46 +41,48 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
                 <div class="item active">
-                    <div class="item-detail-img" background='{{currentModel.frontImgUrl}}' size='cover'></div>
+                    <div class="item-detail-img" background='{{currentStrap.frontImgUrl}}' size='cover'></div>
                 </div>
                 <div class="item">
-                    <div class="item-detail-img2" background='{{currentModel.backImgUrl}}' size='cover'></div>
+                    <div class="item-detail-img2" background='{{currentStrap.backImgUrl}}' size='cover'></div>
                 </div>
             </div>
         </div>
 
         <div class="item-detail-side">
             <div class="color-squares">
-                <a data-toggle="tooltip" class="color-sq" ng-repeat="(key, value) in currentModel.colors">
-                    <input ng-click=''type="button" title="{{ value[0].name }}" class="color-sq" background-color="{{ value[0].rgb }}">
+                <a data-toggle="tooltip" class="color-sq" ng-repeat="color in initColors">
+                    <!--{{search.colorName}}-->
+                    <input ng-click="filterIt('colorName', color)" type="button" ng-class="{disabled: !colorAvailable(color)}" title="{{ color }}" class="color-sq" background-color="{{rgb(color)}}">
                 </a>
             </div>
             <div class="form-entry">
                 <div class="form-entry-row">
                     <div class="form-entry-label">Length</div>
                     <form>
+                        <span ng-show="initLengthAvailable('R')"></span>
+                        <input name="regular" value="R" ng-model="length" type="radio" id="r1" ng-show="initLengthAvailable('R')" ng-click="length = 'R'; filterIt('length', length)">
                         <span></span>
-                        <input name="regular" value="R" ng-model="length" type="radio" id="r1" ng-show=''>
-                        <span></span>
-                        <label for="r1">Regular</label>
-                        <span></span>
-                        <input name="long" value="L" ng-model="length" type="radio" id="r2">
-                        <span></span>
-                        <label for="r2">Long</label>
+                        <label for="r1" ng-show="initLengthAvailable('R')">Regular</label>
+                        <span ng-show="initLengthAvailable('L')"></span>
+                        <input name="long" value="L" ng-model="length" type="radio" id="r2" ng-show="initLengthAvailable('L')" ng-click="length = 'L'; filterIt('length', length)">
+                        <span ng-show="initLengthAvailable('L')"></span>
+                        <label for="r2" ng-show="initLengthAvailable('L')">Long</label>
                     </form>
                 </div>
+                <!--{{showMenu}}-->
                 <div class="form-entry-row">
                     <div class="form-entry-label">Width</div>
                     <div class="dropdown">
-                                        <span class="dropdown-title">
-                                            <a data-toggle="dropdown" ng-click="showMenu=!showMenu">
-                                                {{ value[0].size }}
-                                                <span class="glyphicon glyphicon-chevron-down pull-right"></span>
-                                            </a>
-                                        </span>
+                        <span class="dropdown-title">
+                            <a data-toggle="dropdown" ng-click="showMenu=!showMenu">
+                                {{currentSize || availableSizes[0]}}
+                                <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                            </a>
+                        </span>
                         <ul class="dropdown-menu" ng-show="showMenu" role="menu" aria-labelledby="dLabel">
-                            <li ng-repeat="(key, value) in currentModel.sizes">
-                                <a ng-click="showMenu=!showMenu">{{ value[0].sizeInMillimeters }}</a>
+                            <li ng-repeat="size in initSizes" ng-click='showMenu = false; currentSize = size; '>
+                                <a ng-click="filterIt('size', size)" ng-class="{disabled: !inStrapOptions('size', size), selected: search.size == size}">{{ size }}</a>
                             </li>
                         </ul>
                     </div>
@@ -64,7 +91,7 @@
                     <div class="form-entry-label">Quantity</div>
                     <div counter value="quantity" min="1"></div>
                 </div>
-                <button type="button" class="btn cart-button">ADD TO CART</button>
+                <button type="button" class="btn cart-button" ng-disabled="availableStraps.length != 1" ng-click='addToCart(availableStraps[0])'>ADD TO CART</button>
             </div>
         </div>
 

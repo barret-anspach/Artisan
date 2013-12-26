@@ -124,7 +124,7 @@ angular.module('artisanApp').factory('parseWrapper', ['$http', '$filter','$cooki
 			this.whereClause = whereClause
 			this.order = []
 			this.fieldsToInclude = []
-			this.limit = 100
+			this.limit = 200
 			this.skip = 0
 			this.isBusy = false
 			this.error = null

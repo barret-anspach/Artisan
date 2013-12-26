@@ -215,6 +215,7 @@ body {
 			margin-bottom: $padding;
 			float: left;
 			border: 0px inset transparent;
+            opacity: 1;
 			&:nth-of-type(#{8}n) {
 				margin-right: 0;
 			}
@@ -224,6 +225,10 @@ body {
 			&:focus {
 				border: 0px inset $black;
 			}
+            .disabled{
+              opacity: .8;
+            }
+
 		}
 	}
 }
@@ -443,7 +448,14 @@ body {
 										padding-left: $padding;
 										padding-right: $padding;
 									}
+                                  .disabled{
+                                    color: $ltGrey;
+                                  }
+                                  .selected{
+                                    background-color: yellow;
+                                  }
 								}
+
 							}
 						}
 						.counter-container {
@@ -501,4 +513,12 @@ body {
 
 .modal {
   display: block;
+}
+
+.disabled{
+  opacity: .5;
+}
+
+.selected{
+  opacity: 1;
 }
