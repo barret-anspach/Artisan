@@ -11,10 +11,10 @@
 
         <div class="item-grid">
 
-            <div class="a-item" ui-sref="catalog.detail({ id: model.objectId })"  ng-repeat="model in modelQuery.items | orderBy: model.name">
-                <div class="item-img" background="{{ model.frontImgUrl }}" size="cover"></div>
+            <div class="a-item" ui-sref="catalog.detail({ model: strap.model })"  ng-repeat="strap in modelExamples">
+                <div class="item-img" background="{{ strap.frontImgUrl }}" size="cover"></div>
                 <div class="item-title">
-                    <h4>{{ model.name }}</h4>
+                    <h4>{{ strap.modelName }}</h4>
                 </div>
             </div>
         </div>
