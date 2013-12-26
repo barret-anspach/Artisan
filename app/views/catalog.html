@@ -11,7 +11,7 @@
 
         <div class="item-grid">
 
-            <div class="a-item" ui-sref="catalog.detail({ id: model.objectId })"  ng-repeat="model in modelQuery.items">
+            <div class="a-item" ui-sref="catalog.detail({ id: model.objectId })"  ng-repeat="model in modelQuery.items | orderBy: model.name">
                 <div class="item-img" background="{{ model.frontImgUrl }}" size="cover"></div>
                 <div class="item-title">
                     <h4>{{ model.name }}</h4>

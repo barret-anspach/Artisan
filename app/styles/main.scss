@@ -1,5 +1,6 @@
 //$icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic);
 //@import 'sass-bootstrap/lib/bootstrap.scss';
 @import 'vars';
 @import 'mixins';
@@ -16,37 +17,6 @@ body {
 	font-weight: 300;
 	line-height: $lineHeight;
 	color: $dkGrey;
-
-	#white-00 {
-		color: $white-00;
-	}
-	#black-01 {
-		color: $black-01;
-	}
-	#brown-02 {
-		color: $brown-02;
-	}
-	#tan-03 {
-		color: $tan-03;
-	}
-	#honey-04 {
-		color: $honey-04;
-	}
-	#navy-08 {
-		color: $navy-08;
-	}
-	#bordeaux-09 {
-		color: $bordeaux-09;
-	}
-	#orange-11 {
-		color: $orange-11;
-	}
-	#yellow-12 {
-		color: $yellow-12;
-	}
-	#cognac-14 {
-		color: $cognac-14;
-	}
 
 	.banner-top {
 		position: fixed;
@@ -80,6 +50,8 @@ body {
 		}
 		p {
 			font-family: Lato;
+			line-height: $gutter + $padding;
+			padding-bottom: $gutter;
 		}
 		h1 {
 			font-size: $h1;
@@ -94,7 +66,7 @@ body {
 		h3 {
 			font-size: $h3;
 			font-weight: 300;
-			color: $ltGrey;
+			color: $dkGrey;
 		}
 		h4 {
 			font-size: $fontSize;
@@ -107,24 +79,13 @@ body {
 			padding: 0;
 			margin: 0;
 		}
-		ul {
-			display: inline-block;
-			list-style: none;
-			margin: 0;
-			padding: 0;
-			float:right;
-			li {
-				display: inline-block;
-				list-style: none;
-				margin: 0;
-				padding: 0 $gutter 0 0;
-				&:last-child {
-					padding-right: 0;
-				}
-				h4 {
-					padding: 0;
-				}
-			}
+		.arrow-down {
+			width: 0;
+			height: 0;
+			margin: 0 50%;
+			border-left: $padding solid transparent;
+			border-right: $padding solid transparent;
+			border-top: $padding solid $dkGrey;
 		}
 	}
 }
@@ -134,6 +95,25 @@ body {
 
 #site-header {
 	margin-bottom: $gutter;
+	ul {
+		display: inline-block;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		float:right;
+		li {
+			display: inline-block;
+			list-style: none;
+			margin: 0;
+			padding: 0 $gutter 0 0;
+			&:last-child {
+				padding-right: 0;
+			}
+			h4 {
+				padding: 0;
+			}
+		}
+	}
 	.upper {
 		width: $width;
 		padding-bottom: $padding;
@@ -156,10 +136,6 @@ body {
 			vertical-align: bottom;
 			ul {
 				padding-top: 2em;
-				li a {
-					&:hover {
-					}
-				}
 				li.active a {
 					color: $black;
 					font-weight: 400;
@@ -233,7 +209,9 @@ body {
 
 #main,
 #catalog,
-#about {
+#about,
+#learn,
+#cart, {
 	width: $width;
 	margin: 0;
 	padding: 0;
@@ -242,29 +220,23 @@ body {
 		position: relative;
 		display: block;
 		padding: $gutter 0;
+//		background-color: $dkGrey;
 		border-top: 1px solid $dkGrey;
 		border-bottom: 1px solid $dkGrey;
 		h1 {
+//			color: white;
 			width: $width;
 			text-align: center;
 		}
-		h3 {
-			color: white;
-		}
-//		.featured {
-//			width: $width;
-//			height: $width / 2;
-//			padding-top: ($width - $gutter) / 4;
-//			font-size: $h1;
-//			color: white;
-//			background-color: $black;
-//		}
+
 	}
 }
 
 #main-body,
 #catalog-body,
-#about-body {
+#about-body,
+#learn-body,
+#cart-body {
 	display: inline-block;
 	margin-top: $gutter;
 	.item-grid {
@@ -286,6 +258,7 @@ body {
 				// FIX!!! —————————————————————————————————————
 				min-height: $gutter;
 				max-height: $gutter + $padding;
+				// ————————————————————————————————————————————
 				padding-top: $padding * 2;
 				&:hover {
 					cursor: pointer;
@@ -295,14 +268,103 @@ body {
 				}
 			}
 		}
+		.featured-caption {
+			position: relative;
+			display: inline-block;
+			width: $width;
+			padding-top: $gutter;
+			padding-bottom: $gutter;
+			margin-top: $gutter;
+			margin-bottom: $gutter;
+			border-top: 1px solid $dkGrey;
+			border-bottom: 1px solid $dkGrey;
+			vertical-align: baseline;
+			h1 {
+				left: 0;
+				top: 0;
+			}
+			h3 {
+				font-family: 'Crimson Text', serif;
+				font-style: italic;
+				right: 0;
+				top: 0;
+				padding-top: 7.7pt;
+				.continue {
+				}
+			}
+		}
+		.featured-item {
+			position: relative;
+			display: inline-block;
+//			padding-bottom: $gutter;
+//			border-bottom: 1px solid $dkGrey;
+			.featured-text {
+				width: $width;
+				margin-right: $gutter;
+				h3,
+				.highlighter {
+					color: $black;
+					font-weight: 400;
+				}
+				h3 {
+					color: white;
+					background-color: $dkGrey;
+					font-weight: 100;
+					text-align: center;
+					font-variant: small-caps;
+					margin-top: $gutter;
+					margin-bottom: $gutter;
+					padding-top: $padding;
+					padding-bottom: $padding;
+					border-top: 1px solid $dkGrey;
+					border-bottom: 1px solid $dkGrey;
+					border-radius: 5pt;
+					&:first-child {
+						margin-top: 0;
+					}
+				}
+				p {
+					margin-bottom: 0;
+					padding-bottom: $gutter;
+				}
+			}
+			.featured-img {
+				display: inline-block;
+				width: $width;
+				height: $width / 2;
+				padding-bottom: $gutter;
+			}
+
+//			.featured-img-left {
+//				display: inline-block;
+//				@include grid3_span2(3, $width, $gutter);
+//				padding-bottom: $gutter;
+//				float: left;
+//				margin-right: $gutter;
+//			}
+//			.featured-img-sm-right {
+//				display: inline-block;
+//				@include grid1(3, $width, $gutter);
+////				@include grid3_height(3, $width, $gutter);
+//				padding-bottom: $gutter;
+//				float: right;
+//				margin-left: $gutter;
+//			}
+		}
 		.item-detail {
 			width: $width;
-			min-height: ($width / 2);
+			min-height: ($width / 2.5);
 //				height: ($width / 3) + ($gutter * 2);
+			padding-bottom: $gutter;
+			border-bottom: 1px solid $dkGrey;
 			margin-bottom: $gutter;
 			clear: both;
 			.item-detail-header {
+				height: $gutter;
 				margin-bottom: $gutter;
+				h2 {
+					color: $black;
+				}
 				.right-handed {
 					float: right;
 					vertical-align: baseline;
@@ -310,6 +372,7 @@ body {
 			}
 			.item-detail-img-size {
 				@include grid3_span2(3, $width, $gutter);
+				margin-right: $gutter;
 			}
 			.carousel {
 				.carousel-indicators {
@@ -332,10 +395,12 @@ body {
 			}
 			.item-detail-img {
 				@include grid3_span2(3, $width, $gutter);
+				margin-right: $gutter;
 
 			}
 			.item-detail-img2 {
 				@include grid3_span2(3, $width, $gutter);
+				margin-right: $gutter;
 
 			}
 			.item-detail-side {
@@ -353,102 +418,128 @@ body {
 						.form-entry-label {
 							@include span_cols(3, 8, $side-width, $padding);
 							height: $gutter;
-							text-align: center;
+							text-align: left;
 							vertical-align: baseline;
 							margin-right: $padding;
 							font-weight: 300;
 						}
-						form {
-							position: relative;
-							display: block;
+						.form-entry-content {
 							@include span_cols(5, 8, $side-width, $padding);
-							min-height: $gutter;
-							vertical-align: baseline;
-							span {
-								position: absolute;
-								top: 2px;
-								width: 10px;
-								height: 10px;
-								margin: 0;
-								padding-bottom: 1px;
-								padding-right: 1px;
-								border: 1px solid $dkGrey;
-								border-radius: 15px;
-								background: white;
-								&:after {
-
-								}
-							}
-							input {
-								position: absolute;
-								top: 2px;
-								width: 12px;
-								height: 12px;
-								margin: 0;
-								filter: alpha(opacity=0);
-								opacity: 0;
-								cursor: pointer;
-							}
-							input[type='radio'] + span {
-								visibility: hidden;
-								width: 12px;
-								height: 12px;
-								top: 1px;
-								padding: 0;
-								border: 0px transparent;
-								background: $dkGrey;
-								&:after {
-									width: 12px;
-									height: 12px;
-									top: 1px;
-									border-radius: 12px;
-									background: $dkGrey;
-								}
-							}
-							input[type='radio']:checked + span {
-								visibility: visible;
-							}
-							label {
-								font-weight: 400;
-								padding: 0;
-								margin-left: $gutter;
-								margin-right: $padding;
-								vertical-align: top;
-							}
-						}
-						.dropdown {
-							position: relative;
-							@include span_cols(5, 8, $side-width, $padding);
-							.dropdown-title {
-								width: 100%;
-								text-align: center;
-								a {
-									font-weight: 400;
-								}
-								span {
-									margin-right: $padding;
-								}
-							}
-							.dropdown-menu {
-								position: absolute;
-								top: 100%;
-//									@include offset_cols(3, 8, $side-width, $padding);
-								@include span_cols(5, 8, $side-width, $padding);
-								min-width: $gutter * 6;
-								margin: 0;
-								padding: 0;
-								li {
-									width: 100%;
-									a {
-										padding-left: $padding;
-										padding-right: $padding;
+							height: $gutter;
+							.btn-group {
+								.dropdown-toggle {
+									@include span_cols(5, 8, $side-width, $padding);
+									button {
+										@include span_cols(5, 8, $side-width, $padding);
 									}
 								}
+								ul {
+									@include span_cols(5, 8, $side-width, $padding);
+									margin: 0;
+									padding: 0;
+									border: 0;
+									li {
+										@include span_cols(5, 8, $side-width, $padding);
+									}
+								}
+								ul .dropdown-menu {
+									@include span_cols(5, 8, $side-width, $padding);
+									margin: 0;
+									padding: 0;
+									border: 0;
+								}
 							}
+
 						}
+//						form {
+//							position: relative;
+//							display: block;
+//							@include span_cols(5, 8, $side-width, $padding);
+//							min-height: $gutter;
+//							vertical-align: baseline;
+//							span {
+//								position: absolute;
+//								top: 2px;
+//								width: 10px;
+//								height: 10px;
+//								margin: 0;
+//								padding-bottom: 1px;
+//								padding-right: 1px;
+//								border: 1px solid $dkGrey;
+//								border-radius: 15px;
+//								background: white;
+//								&:after {
+//
+//								}
+//							}
+//							input {
+//								position: absolute;
+//								top: 2px;
+//								width: 12px;
+//								height: 12px;
+//								margin: 0;
+//								filter: alpha(opacity=0);
+//								opacity: 0;
+//								cursor: pointer;
+//							}
+//							input[type='radio'] + span {
+//								visibility: hidden;
+//								width: 12px;
+//								height: 12px;
+//								top: 1px;
+//								padding: 0;
+//								border: 0px transparent;
+//								background: $dkGrey;
+//								&:after {
+//									width: 12px;
+//									height: 12px;
+//									top: 1px;
+//									border-radius: 12px;
+//									background: $dkGrey;
+//								}
+//							}
+//							input[type='radio']:checked + span {
+//								visibility: visible;
+//							}
+//							label {
+//								font-weight: 400;
+//								padding: 0;
+//								margin-left: $gutter;
+//								margin-right: $padding;
+//								vertical-align: top;
+//							}
+//						}
+//						.dropdown {
+//							position: relative;
+//							@include span_cols(5, 8, $side-width, $padding);
+//							.dropdown-title {
+//								width: 100%;
+//								text-align: center;
+//								a {
+//									font-weight: 400;
+//								}
+//								span {
+//									margin-right: $padding;
+//								}
+//							}
+//							.dropdown-menu {
+//								position: absolute;
+//								top: 100%;
+////									@include offset_cols(3, 8, $side-width, $padding);
+//								@include span_cols(5, 8, $side-width, $padding);
+//								min-width: $gutter * 6;
+//								margin: 0;
+//								padding: 0;
+//								li {
+//									width: 100%;
+//									a {
+//										padding-left: $padding;
+//										padding-right: $padding;
+//									}
+//								}
+//							}
+//						}
 						.counter-container {
-							position: absolute;
-							@include offset_cols(3, 8, $side-width, $padding);
 							@include span_cols(5, 8, $side-width, $padding);
 							height: $gutter;
 						}
@@ -458,10 +549,13 @@ body {
 							-ms-user-select: none;
 							user-select: none;
 
-//								background: #333;
-							color: $dkGrey;
+							background-color: $dkGrey;
+							color: white;
+							height: $gutter;
+							width: $gutter;
 							margin: 0;
-							padding: 0 $padding;
+							padding: 2px 3px;
+							text-align: center;
 							text-decoration: none;
 						}
 						.counter-minus {
@@ -475,7 +569,7 @@ body {
 							margin: 0 0 0 ($padding * 2);
 							padding: 0 $padding;
 							text-align: center;
-							width: $gutter * 3;
+							width: ($gutter * 4);
 						}
 					}
 					.cart-button {
@@ -484,7 +578,7 @@ body {
 						margin-top: ($padding * 2);
 						padding: 0 $padding;
 						text-align: center;
-						border: 2px inset $dkGrey;
+						border: 1px solid $dkGrey;
 						color: $dkGrey;
 						background: white;
 					}

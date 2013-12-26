@@ -8,7 +8,7 @@
 
   strapApp.factory('monocle', [
     '$http', 'parseWrapper', function($http, parseWrapper) {
-      var Color, Material, Model, Size, Strap, monocle;
+      var Color, Material, Model, Size, Strap, User, monocle;
       Strap = (function(_super) {
         __extends(Strap, _super);
 
@@ -89,7 +89,8 @@
         Model.register = function() {
           return {
             name: void 0,
-            number: void 0
+            number: void 0,
+            msrp: void 0
           };
         };
 
@@ -114,6 +115,28 @@
         return Size;
 
       })(parseWrapper.Resource);
+      User = (function(_super) {
+        __extends(User, _super);
+
+        function User(objectId) {
+          User.__super__.constructor.call(this, objectId);
+        }
+
+        User.register = function() {
+          var props;
+          props = {
+            username: void 0,
+            fullname: void 0,
+            email: void 0,
+            shoppingCart: new parseWrapper.Collection('Strap')
+          };
+          angular.extend(props, parseWrapper.User.register());
+          return props;
+        };
+
+        return User;
+
+      })(parseWrapper.User);
       monocle = {
         initialize: function() {
           $http.defaults.headers.common['X-Parse-Application-Id'] = 'ZbDr2YfdSml61bcJGGKAqg25YYI1zhycsYLj7gF8';
@@ -124,6 +147,7 @@
       monocle.Color = parseWrapper.Resource.registerResource(Color);
       monocle.Material = parseWrapper.Resource.registerResource(Material);
       monocle.Model = parseWrapper.Resource.registerResource(Model);
+      monocle.User = parseWrapper.Resource.registerResource(User);
       monocle.Size = parseWrapper.Resource.registerResource(Size);
       monocle.initialize();
       return monocle;

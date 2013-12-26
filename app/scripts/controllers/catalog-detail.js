@@ -3,8 +3,7 @@
 angular.module('artisanApp')
     .controller('CatalogDetailCtrl', function ($scope, monocle, $stateParams) {
 
-        $('input.color-sq').tooltip('hide');
-        $scope.showMenu = false;
+        $scope.radioModel = 'Regular';
         $scope.quantity = 1;
 
         if($stateParams.id){
@@ -20,7 +19,7 @@ angular.module('artisanApp')
         $scope.fetchStrapsByModel = function(model) {
             $scope.currentModel = model;
             $scope.whereClause = {model:{__type:"Pointer", className:"Model", objectId:model.objectId}};
-            $scope.strapQuery = monocle.Strap.query($scope.whereClause).include(["material", "color", "model", "size"]);
+            $scope.strapQuery = monocle.Strap.query($scope.whereClause).include(["material", "color", "model", "size"]).howMany(500);
             $scope.strapQuery.fetch().success(function(data) {
 
                 $scope.currentModel.sizes = _.groupBy(_.pluck(data, "size"), function(size) {

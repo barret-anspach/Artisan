@@ -2,6 +2,7 @@
 $gutter: 15pt;
 $padding: 5pt;
 $width: 555pt;
+
 $side-width: (($width - ($gutter * 2)) / 3);
 $catW: 175pt;
 $catImgH: $side-width / 2;
@@ -51,36 +52,3 @@ $white-pearl-60: rgb(231, 225, 219);
 $pink-pearl-61: rgb(233, 204, 197);
 $blue-pearl-62: rgb(188, 208, 204);
 $champagne-63:  rgb(236, 224, 208);
-
-#white-00 {
-	color: $white-00;
-}
-#black-01 {
-	color: $black-01;
-}
-#brown-02 {
-	color: $brown-02;
-}
-#tan-03 {
-	color: $tan-03;
-}
-#honey-04 {
-	color: $honey-04;
-}
-#navy-08 {
-	color: $navy-08;
-}
-#bordeaux-09 {
-	color: $bordeaux-09;
-}
-#orange-11 {
-	color: $orange-11;
-}
-#yellow-12 {
-	color: $yellow-12;
-}
-#cognac-14 {
-	color: $cognac-14;
-}
-
-

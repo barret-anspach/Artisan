@@ -29,6 +29,14 @@ angular.module('artisanApp', [
                 url: "/about",
                 templateUrl: "views/about.html"
             })
+            .state('cart', {
+                url: "/cart",
+                templateUrl: "views/cart.html"
+            })
+            .state('learn', {
+                url: "/learn",
+                templateUrl: "views/learn.html"
+            })
 
   });
 

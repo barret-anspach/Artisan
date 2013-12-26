@@ -36,7 +36,7 @@
 	$span2: ((($total_width - (($total_columns - 1) * $margin_right)) / 3 ) * 2 ) + $margin_right;
 	width: $span2;
 	height: $span2 / 2;
-	margin-right: $margin_right;
+//	margin-right: $margin_right;
 }
 
 @mixin grid3_height($total_columns, $total_width, $margin_right) {
@@ -47,7 +47,9 @@
 
 @mixin grid1($total_columns, $total_width, $margin_right){
 	@extend .span;
-	width: ($total_width - (($total_columns - 1) * $margin_right)) / 3;
+	$span1: ($total_width - (($total_columns - 1) * $margin_right)) / 3;
+	width: $span1;
+	height: $span1;
 	margin-right: 0;
 }
 

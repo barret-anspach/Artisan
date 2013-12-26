@@ -1,13 +1,13 @@
-<div class="item-grid" ng-controller="CatalogDetailCtrl">
+<div class="item-grid" ng-cloak ng-controller="CatalogDetailCtrl">
 
     <div class="item-detail">
 
         <div class="item-detail-header">
-            <span class="right-handed"><h2>$169.99</h2></span>
+            <span class="right-handed" ng-cloak><h2>${{ currentModel.msrp }}</h2></span>
             <h2>{{ currentModel.name }}</h2>
         </div>
 
-        <div id="carousel-item-detail" class="carousel slide item-detail-img-size" data-ride="carousel">
+        <div id="carousel-item-detail" class="carousel slide item-detail-img-size" data-ride="carousel" ng-cloak>
             <!-- Indicators -->
             <ol class="carousel-indicators">
                 <li data-target="#carousel-item-detail" data-slide-to="0" class="active"></li>
@@ -25,44 +25,57 @@
         </div>
 
         <div class="item-detail-side">
-            <div class="color-squares">
-                <a data-toggle="tooltip" class="color-sq" ng-repeat="(key, value) in currentModel.colors">
-                    <input ng-click=''type="button" title="{{ value[0].name }}" class="color-sq" background-color="{{ value[0].rgb }}">
+            <div class="color-squares" ng-cloak>
+                <a data-toggle="tooltip" class="color-sq" ng-repeat="(key, value) in currentModel.colors | orderBy: value[0].number">
+                    <input ng-click="" type="button" title="{{ value[0].name }}" class="color-sq" background-color="{{ value[0].rgb }}">
                 </a>
             </div>
             <div class="form-entry">
                 <div class="form-entry-row">
                     <div class="form-entry-label">Length</div>
-                    <form>
-                        <span></span>
-                        <input name="regular" value="R" ng-model="length" type="radio" id="r1" ng-show=''>
-                        <span></span>
-                        <label for="r1">Regular</label>
-                        <span></span>
-                        <input name="long" value="L" ng-model="length" type="radio" id="r2">
-                        <span></span>
-                        <label for="r2">Long</label>
-                    </form>
-                </div>
-                <div class="form-entry-row">
-                    <div class="form-entry-label">Width</div>
-                    <div class="dropdown">
-                                        <span class="dropdown-title">
-                                            <a data-toggle="dropdown" ng-click="showMenu=!showMenu">
-                                                {{ value[0].size }}
-                                                <span class="glyphicon glyphicon-chevron-down pull-right"></span>
-                                            </a>
-                                        </span>
-                        <ul class="dropdown-menu" ng-show="showMenu" role="menu" aria-labelledby="dLabel">
-                            <li ng-repeat="(key, value) in currentModel.sizes">
-                                <a ng-click="showMenu=!showMenu">{{ value[0].sizeInMillimeters }}</a>
-                            </li>
-                        </ul>
+                    <div class="form-entry-content">
+                        <div class="btn-group btn-group-xs btn-group-justified">
+                            <a type="button" class="btn btn-default" ng-model="radioModel" btn-radio="'Regular'">Regular</a>
+                            <a type="button" class="btn btn-default" ng-model="radioModel" btn-radio="'Long'">Long</a>
+                        </div>
                     </div>
                 </div>
                 <div class="form-entry-row">
+                    <div class="form-entry-label">Width</div>
+                    <div class="form-entry-content">
+                        <div class="btn-group btn-group-xs">
+                            <a class="dropdown-toggle">
+                                <button class="btn btn-xs btn-default">{{ value[0].sizeInMillimeters || "Width" }} <span class="caret"></span></button>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li ng-repeat="(key, value) in currentModel.sizes">
+                                    <a type="button" class="btn btn-xs btn-default">{{ value[0].sizeInMillimeters }}mm</a>
+                                </li>
+                                <!--<li><a type="button" class="btn btn-xs btn-default">One line</a></li>-->
+                                <!--<li><a type="button" class="btn btn-xs btn-default">Two lines</a></li>-->
+                                <!--<li><a type="button" class="btn btn-xs btn-default">Three lines</a></li>-->
+                            </ul>
+                        </div>
+                    </div>
+                    <!--<div class="dropdown">-->
+                        <!--<span class="dropdown-title">-->
+                            <!--<a data-toggle="dropdown" ng-click="showMenu=!showMenu">-->
+                                <!--{{ value[0].size }}-->
+                                <!--<span class="glyphicon glyphicon-chevron-down pull-right"></span>-->
+                            <!--</a>-->
+                        <!--</span>-->
+                        <!--<ul class="dropdown-menu" ng-show="showMenu" role="menu" aria-labelledby="dLabel">-->
+                            <!--<li ng-repeat="(key, value) in currentModel.sizes">-->
+                                <!--<a ng-click="showMenu=!showMenu">{{ value[0].sizeInMillimeters }}</a>-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                </div>
+                <div class="form-entry-row">
                     <div class="form-entry-label">Quantity</div>
-                    <div counter value="quantity" min="1"></div>
+                    <div class="form-entry-content">
+                        <div counter value="quantity" min="1" max="20" editable></div>
+                    </div>
                 </div>
                 <button type="button" class="btn cart-button">ADD TO CART</button>
             </div>

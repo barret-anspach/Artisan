@@ -58,7 +58,8 @@ strapApp.factory('monocle', ['$http', 'parseWrapper', ($http, parseWrapper) ->
 		@register: () ->
 			#this is where you define your classes properities -- or column names
 			name: undefined,
-			number: undefined
+			number: undefined,
+			msrp: undefined
 
 	class Size extends parseWrapper.Resource
 		constructor: (objectId) ->

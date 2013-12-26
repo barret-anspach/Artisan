@@ -10,7 +10,8 @@ var app = angular.module('artisanApp')
                     'background-image': 'url(' + value + ')',
                     'background-size': attrs.size,
                     'background-position': 'center center',
-                    'background-repeat': 'no-repeat'
+                    'background-repeat': 'no-repeat',
+                    'border-radius': '5pt'
                 })
             });
 
@@ -28,3 +29,15 @@ var app = angular.module('artisanApp')
             })
         }
     });
+
+//    app.directive('dropdown', function () {
+//
+//        return function (scope, element, attrs) {
+//            attrs.$observe('dropdown', function(value) {
+//                element.css({
+//                    'visibility': value
+//                });
+//                console.log(value);
+//            })
+//        }
+//    });
