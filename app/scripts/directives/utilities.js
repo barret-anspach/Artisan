@@ -2,6 +2,20 @@
 
 var app = angular.module('artisanApp')
 
+    app.directive('bgSize', function() {
+        return function (scope, element, attrs) {
+            scope.w = window.innerWidth;
+            scope.h = window.innerHeight;
+            window.console.log("I'm setting the min container size");
+            attrs.$observe('bgSize', function () {
+                element.css({
+                    'width': scope.w,
+                    'min-height': scope.h
+                })
+            })
+        }
+    })
+
     app.directive('background', function () {
 
         return function (scope, element, attrs) {

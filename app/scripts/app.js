@@ -23,7 +23,6 @@ angular.module('artisanApp', [
             .state('catalog.detail', {
                 url: "/:model",
                 templateUrl: "views/catalog.detail.html"
-
             })
             .state('about', {
                 url: "/about",

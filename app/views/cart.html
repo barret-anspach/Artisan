@@ -1,1 +1,97 @@
 <div ng-include="'views/header.html'"></div>
+
+<div id="cart" ng-controller="CartCtrl">
+    <div class="header">
+        <h1>Shopping Cart</h1>
+    </div>
+
+    <div id="cart-body">
+        <div class="item-grid">
+            <table class="cart-table">
+                <thead>
+                    <tr class="cart-table-header">
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th><!-- Remove from cart --></th>
+                    </tr>
+                </thead>
+                <tbody>
+                <!-- ng-repeat item in cart.items or something -->
+                    <tr class="cart-table-row">
+                        <td>
+                            <h4>Ultra-Thin Alligator</h4>
+                        </td>
+                        <td>$169.99</td>
+                        <td><input class="cart-item-qty" type="number"></td>
+                        <td>$169.99</td>
+                        <td><span class="glyphicon glyphicon-remove"></span></td>
+
+                    </tr>
+                    <tr class="cart-item-img">
+                        <td colspan="5">
+                            <div class="cart-item-img" background="images/AITG500-top.jpg" size="cover">
+                                <div class="cart-item-detail-text">
+                                    <h5>Color: Brown</h5>
+                                    <h5>Length: Regular</h5>
+                                    <h5>Width: 18mm</h5>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="cart-table-row">
+                        <td>
+                            <h4>Ultra-Thin Alligator</h4>
+                        </td>
+                        <td>$169.99</td>
+                        <td><input class="cart-item-qty" type="number"></td>
+                        <td>$169.99</td>
+                        <td><span class="glyphicon glyphicon-remove"></span></td>
+
+                    </tr>
+                    <tr class="cart-item-img">
+                        <td colspan="5">
+                            <div class="cart-item-img" background="images/AITG500-top.jpg" size="cover">
+                                <div class="cart-item-detail-text">
+                                    <h5>Color: Brown</h5>
+                                    <h5>Length: Regular</h5>
+                                    <h5>Width: 18mm</h5>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="side-totals">
+                <thead>
+                    <tr class="cart-table-header">
+                        <th>Totals</th>
+                        <th class="currency"><!-- Amounts --></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="cart-table-row">
+                        <td>Subtotal</td>
+                        <td class="currency ait-small">$169.99</td>
+                    </tr>
+                    <tr class="cart-table-row">
+                        <td>Taxes</td>
+                        <td class="currency ait-small">$0.00</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr class="cart-table-row grand-total">
+                        <td>
+                            <h3>Total</h3>
+                        </td>
+                        <td>
+                            <h3 class="currency">$169.99</h3>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

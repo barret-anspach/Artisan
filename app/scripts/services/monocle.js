@@ -139,8 +139,8 @@
       })(parseWrapper.User);
       monocle = {
         initialize: function() {
-          $http.defaults.headers.common['X-Parse-Application-Id'] = 'ZbDr2YfdSml61bcJGGKAqg25YYI1zhycsYLj7gF8';
-          return $http.defaults.headers.common['X-Parse-REST-API-Key'] = '0jAJPgQ8VqIikLsrAPLwrscwO3kaNMre7mF6MxdV';
+          $http.defaults.headers.common['X-Parse-Application-Id'] = 'vsph4BARvMHNuQJoRU1lDxhxg1otvLCa4ArSrERA';
+          return $http.defaults.headers.common['X-Parse-REST-API-Key'] = '9scmvh4r75QgFKiWau9nwyhXzwt2z18AQu1D3pKA';
         }
       };
       monocle.Strap = parseWrapper.Resource.registerResource(Strap);

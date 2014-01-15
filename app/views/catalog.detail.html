@@ -1,7 +1,5 @@
 <div class="item-grid" ng-cloak ng-controller="CatalogDetailCtrl">
 
-
-
     <!--Straps available with model Name: {{$stateParams.model}}-->
 
     <!--Filter: {{search}}-->
@@ -25,10 +23,8 @@
     <!--</table>-->
     <div class="item-detail">
 
-        <div ng-show='availableStraps.length == 1'>This is the only strap of this kind</div>
-
         <div class="item-detail-header">
-            <span class="right-handed"><h2>{{currentStrap.price}}</h2></span>
+            <span class="right-handed"><h2>${{currentStrap.msrp}}</h2></span>
             <h2>{{ currentStrap.modelName }}</h2>
         </div>
 
@@ -53,10 +49,13 @@
             <div class="color-squares">
                 <a data-toggle="tooltip" class="color-sq" ng-repeat="color in initColors">
                     <!--{{search.colorName}}-->
-                    <input ng-click="filterIt('colorName', color)" type="button" ng-class="{disabled: !colorAvailable(color)}" title="{{ color }}" class="color-sq" background-color="{{rgb(color)}}">
+                    <input ng-click="filterIt('colorName', color)" type="button" ng-class="{disabled: !colorAvailable(color)}" title="{{ color }}" class="color-sq" background-color="{{rgb(color)}}" color-tooltip="{{ color }}">
                 </a>
             </div>
             <div class="form-entry">
+                <div class="form-entry-row">
+                    <div class="form-alert alert-success" ng-show='availableStraps.length == 1'>You've selected a strap.</div>
+                </div>
                 <div class="form-entry-row">
                     <div class="form-entry-label">Length</div>
                     <!--<div class="form-entry-content">-->
@@ -65,46 +64,34 @@
                             <!--<a type="button" class="btn btn-default" ng-model="radioModel" btn-radio="'Long'">Long</a>-->
                         <!--</div>-->
                     <!--</div>-->
-                    <form>
-                        <span ng-show="initLengthAvailable('R')"></span>
-                        <input name="regular" value="R" ng-model="length" type="radio" id="r1" ng-show="initLengthAvailable('R')" ng-click="length = 'R'; filterIt('length', length)">
-                        <span></span>
-                        <label for="r1" ng-show="initLengthAvailable('R')">Regular</label>
-                        <span ng-show="initLengthAvailable('L')"></span>
-                        <input name="long" value="L" ng-model="length" type="radio" id="r2" ng-show="initLengthAvailable('L')" ng-click="length = 'L'; filterIt('length', length)">
-                        <span ng-show="initLengthAvailable('L')"></span>
-                        <label for="r2" ng-show="initLengthAvailable('L')">Long</label>
-                    </form>
+                    <div class="form-entry-content">
+                        <div class="btn-group btn-group-xs btn-group-justified">
+                            <!--<span ng-show="initLengthAvailable('R')"></span>-->
+                            <a name="regular" type="button" class="btn btn-default" value="R" ng-model="length" ng-show="initLengthAvailable('R')" ng-click="length = 'R'; filterIt('length', length)">
+                                <span ng-show="initLengthAvailable('R')">Regular</span>
+                            </a>
+                            <!--<span ng-show="initLengthAvailable('L')"></span>-->
+                            <a name="long" type="button" class="btn btn-default" value="L" ng-model="length" ng-show="initLengthAvailable('L')" ng-click="length = 'L'; filterIt('length', length)">
+                                <span ng-show="initLengthAvailable('L')">Long</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-entry-row">
                     <div class="form-entry-label">Width</div>
-                    <!--<div class="form-entry-content">-->
-                        <!--<div class="btn-group btn-group-xs">-->
-                            <!--<a class="dropdown-toggle">-->
-                                <!--<button class="btn btn-xs btn-default">{{ value[0].sizeInMillimeters || "Width" }} <span class="caret"></span></button>-->
-                            <!--</a>-->
-                            <!--<ul class="dropdown-menu">-->
-                                <!--<li ng-repeat="(key, value) in currentModel.sizes">-->
-                                    <!--<a type="button" class="btn btn-xs btn-default">{{ value[0].sizeInMillimeters }}mm</a>-->
-                                <!--</li>-->
-                                <!--&lt;!&ndash;<li><a type="button" class="btn btn-xs btn-default">One line</a></li>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<li><a type="button" class="btn btn-xs btn-default">Two lines</a></li>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<li><a type="button" class="btn btn-xs btn-default">Three lines</a></li>&ndash;&gt;-->
-                            <!--</ul>-->
-                        <!--</div> -->
-                    <!--</div>-->
-                    <div class="dropdown">
-                        <span class="dropdown-title">
-                            <a data-toggle="dropdown" ng-click="showMenu=!showMenu">
-                                {{currentSize || availableSizes[0]}}
-                                <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                    <div class="form-entry-content dropdown">
+                        <div class="btn-group btn-group-xs">
+                            <a class="dropdown-toggle">
+                                <button class="btn btn-xs btn-default" ng-click="showMenu=!showMenu">
+                                    {{currentSize || availableSizes[0] }}mm <span class="caret"></span>
+                                </button>
                             </a>
-                        </span>
-                        <ul class="dropdown-menu" ng-show="showMenu" role="menu" aria-labelledby="dLabel">
-                            <li ng-repeat="size in initSizes" ng-click='showMenu = false; currentSize = size; '>
-                                <a ng-click="filterIt('size', size)" ng-class="{disabled: !inStrapOptions('size', size), selected: search.size == size}">{{ size }}</a>
-                            </li>
-                        </ul>
+                            <ul class="dropdown-menu" ng-show="showMenu" role="menu" aria-labelledby="dLabel">
+                                <li ng-repeat="size in initSizes" ng-click='showMenu = false; currentSize = size;'>
+                                    <a ng-click="filterIt('size', size)" ng-class="{disabled: !inStrapOptions('size', size), selected: search.size == size}">{{ size }}mm</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="form-entry-row">
@@ -116,9 +103,12 @@
                 <button type="button" class="btn cart-button" ng-disabled="availableStraps.length != 1" ng-click='addToCart(availableStraps[0])'>ADD TO CART</button>
             </div>
         </div>
-
-        <div class="item-detail-info">
-
-        </div>
+    </div>
+    <div class="item-detail-info">
+        <tabset justified="true">
+            <tab heading="Information">This will show information specific to each <b>model</b>, not each strap. Two to three sentences at most.</tab>
+            <tab heading="Specification">A table of <b>strap</b> information, per chosen combination of width and length: width, width at buckle, lengths, etc.</tab>
+            <tab heading="How It's Made">Eventually a video, but for now a few sentences about its construction.</tab>
+        </tabset>
     </div>
 </div>
